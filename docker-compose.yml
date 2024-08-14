@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  basicblogapi:
+    image: ${DOCKER_REGISTRY-}basicblogapi
+    build:
+      context: .
+      dockerfile: BasicBlogAPI/Dockerfile
+  basicblogweb:
+    image: blogfront
+    ports:
+      - "80:80"
+    depends_on:
+      - basicblogapi
